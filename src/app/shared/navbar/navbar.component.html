@@ -1,0 +1,28 @@
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-primary mb-5" [containerInside]="false">
+    <mdb-navbar-brand class="mr-5"><a class="navbar-brand" href="#">Héroes App</a></mdb-navbar-brand>
+    <links>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" routerLinkActive="active">
+                <a routerLink="/home" class="nav-link waves-light" mdbWavesEffect><i class="fas fa-home"></i>&nbsp;Inicio</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a routerLink="/login" class="nav-link waves-light" id="linkin" mdbWavesEffect>
+                    <i class="fas fa-sign-in-alt"></i>&nbsp;Iniciar Sesión
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <form class="form-inline waves-light" mdbWavesEffect>
+                <div class="md-form my-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                </div>
+            </form>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect>
+                    <i class="fas fa-sign-out-alt"></i>&nbsp;Cerrar Sesión
+                </a>
+            </li>
+        </ul>
+    </links>
+</mdb-navbar>
+
