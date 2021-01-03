@@ -13,7 +13,7 @@
                 </div>
             </form>
             <li class="nav-item" *ngIf="loginService.logueado">
-                <a class="nav-link waves-light" mdbWavesEffect>
+                <a routerLink="/login" (click)="logout()" class="nav-link waves-light" mdbWavesEffect>
                     <i class="fas fa-sign-out-alt"></i>&nbsp;Cerrar Sesión
                 </a>
             </li>
