@@ -15,7 +15,11 @@ export class LoginComponent implements OnInit {
 	constructor( private formBuilder: FormBuilder,
 				 private loginService: LoginService,
 				 private router: Router ) { 
-		this.loginService.validarSesion();
+		if( this.loginService.validarSesion() ) {
+			this.router.navigate(['home']);
+			this.loginService.show = true;
+		} 
+		
 	}
 
 	ngOnInit(): void {

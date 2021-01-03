@@ -12,38 +12,38 @@ import Swal from 'sweetalert2';
 })
 export class LoginService {
 
-	public logueado: boolean;
+	public show: boolean;
 	private urlBase: string = "http://192.168.1.5:8080/heroes-api";
 
 	constructor( private http: HttpClient,
 				 private router: Router ) { 
-		this.logueado = false;
+		this.show = false;
 	}
 
-	validarSesion() {
+	validarSesion(): boolean {
 
 		const token = localStorage.getItem("usuarioToken");
 		const expiracion = new Date( Date.parse(localStorage.getItem("expiracion")) );
 		const fechaActual = new Date();
 
 		if( token !== null && expiracion !== null ) {
-
 			if( fechaActual >= expiracion ) {
-				this.logueado = false;
-				this.logout();
-				console.log("El token venció");
+				/* Swal.fire({
+					title: "Error!",
+					text: "La sesión expiró. Por favor, inicia sesión de nuevo.",
+					icon: 'error',
+				}); */
+				this.show = false;
+				localStorage.removeItem("usuarioToken");
+				localStorage.removeItem("expiracion");
+				return false;
 			} else {
-
-				this.logueado = true;
-				this.router.navigate(['home']);
-
-				console.log("Token aun no vence: ");
-				console.log("Expiracion: ", expiracion);
-				console.log("FechaActual: ", fechaActual );
+				this.show = true;
+				return true;
 			}
-
 		} else {
-			this.logueado = false;
+			this.show = false;
+			return false;
 		}
 
 	}
@@ -66,7 +66,7 @@ export class LoginService {
 									localStorage.setItem("usuarioToken", token );
 									localStorage.setItem("expiracion", fechaExpiracion.toString() );
 
-									this.logueado = true;
+									this.show = true;
 									this.router.navigate(['home']); 
 
 									console.log( token );
@@ -83,11 +83,6 @@ export class LoginService {
 							
 						);
 		
-	}
-
-	logout() {
-		localStorage.removeItem("usuarioToken");
-		localStorage.removeItem("expiracion");
 	}
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroesService } from 'src/app/services/heroes.service';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -9,7 +9,8 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class NavbarComponent implements OnInit {
 
-	constructor( public loginService: LoginService ) {
+	constructor( public loginService: LoginService, 
+				 private router: Router ) {
 
 	}
 
@@ -18,7 +19,9 @@ export class NavbarComponent implements OnInit {
 	}
 
 	logout() {
-		this.loginService.logout();
+		localStorage.removeItem("usuarioToken");
+		localStorage.removeItem("expiracion");
+		this.router.navigate(['login']);
 	}
 
 }
