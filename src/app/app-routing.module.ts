@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 /* Guards */
 import { LoginGuard } from './auth/login.guard';
+import { CrearHeroeComponent } from './components/crear-heroe/crear-heroe.component';
 
 /* Components */
 import { HomeComponent } from './components/home/home.component';
@@ -13,6 +14,7 @@ const ROUTES: Routes = [
   { path: "login", component: LoginComponent },
   { path: "home", component: HomeComponent, canActivate: [ LoginGuard ] },
   { path: "verMas/:id", component: VerMasComponent, canActivate: [ LoginGuard ] },
+  { path: "crearHeroe", component: CrearHeroeComponent, canActivate: [ LoginGuard ] },
   { path: '**',   redirectTo: '/login', pathMatch: 'full' }
 ];
 

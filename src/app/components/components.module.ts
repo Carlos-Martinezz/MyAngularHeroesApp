@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { VerMasComponent } from './ver-mas/ver-mas.component';
 import { ImagenPipe } from '../pipes/imagen.pipe';
+import { CrearHeroeComponent } from './crear-heroe/crear-heroe.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ImagenPipe } from '../pipes/imagen.pipe';
     HomeComponent, 
     LoginComponent, 
     VerMasComponent,
-    ImagenPipe
+    ImagenPipe,
+    CrearHeroeComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,85 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 ml-auto mr-auto col-xs-12 mb-5">
+			<!-- Material form login -->
+			<mdb-card>
+				<mdb-card-header class="primary-color white-text text-center py-4">
+					<h5>
+						Iniciar Sesión
+					</h5>
+				</mdb-card-header>
+				<!--Card content-->
+				<mdb-card-body class="px-lg-5 pt-0">
+					<!-- Form -->
+					<form [formGroup]="formGroup" style="color: #757575;">
+						<!-- Nombre -->
+						<div class="md-form">
+							<input name="nombre"
+								   formControlName="nombre"
+								   type="text" 
+								   id="nombre" 
+								   class="form-control" 
+								   mdbInput>
+							<label for="nombre">Nombre</label>
+						</div>
+						<!-- Biografía -->
+						<div class="md-form">
+                            <textarea  name="biografia"
+                                    rows="3"
+									formControlName="biografia"
+									type="text" 
+									id="biografia" 
+									class="md-textarea form-control" 
+                                    mdbInput></textarea>
+							<label for="biografia">Biografía</label>
+                        </div>
+                        <!-- Imagen -->
+                        <div class="md-form">
+                            Selecciona una imagen
+                            <br>
+                            <br>
+                            <input  name="imagen"
+                                    formControlName="imagen"
+                                    type="file" 
+                                    id="imagen" 
+                                    class="file-path"
+                                    mdbInput
+                                    >  
+                        </div>
+                        <!-- Aparición -->
+                        <div class="md-form">
+							<input  name="aparicion"
+									formControlName="aparicion"
+									type="date" 
+									id="aparicion" 
+									class="form-control" 
+                                    mdbInput>
+							<label for="aparicion">Aparición</label>
+                        </div>
+                        <div class="md-form">
+							<input  name="casa"
+									formControlName="casa"
+									type="text" 
+									id="casa" 
+									class="form-control" 
+                                    mdbInput>
+							<label for="casa">Casa</label>
+                        </div>
+						<!-- Sign in button -->
+						<button (click)="enviar()"
+								[disabled]="formGroup.invalid"
+								mdbBtn 
+								color="info"  
+								rounded="true" 
+								block="true"
+								class="my-4 waves-effect z-depth-0" 
+								mdbWavesEffect 
+								type="button">Crear</button>
+						<!-- Register -->
+                    </form>
+					<!-- Form -->
+				</mdb-card-body>
+			</mdb-card>
+		</div>
+	</div>
+</div>
