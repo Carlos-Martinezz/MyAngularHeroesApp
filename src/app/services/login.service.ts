@@ -5,45 +5,55 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 import jwt_decode from "jwt-decode";
-import Swal from 'sweetalert2';
+
+import { Alerts } from '../utils/alerts.utils';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class LoginService {
 
+	private urlBase: string = environment.API_URL;
 	public show: boolean;
-	private urlBase: string = "http://192.168.1.5:8080/heroes-api";
+	private token: string; 
 
 	constructor( private http: HttpClient,
-				 private router: Router ) { 
+				 private router: Router,
+				 private alerts: Alerts ) { 
 		this.show = false;
 	}
 
 	validarSesion(): boolean {
 
-		const token = localStorage.getItem("usuarioToken");
-		const expiracion = new Date( Date.parse(localStorage.getItem("expiracion")) );
+		const token = localStorage.getItem( "usuarioToken" );
+		const expiracion = new Date( Date.parse(localStorage.getItem( "expiracion" )) );
 		const fechaActual = new Date();
 
 		if( token !== null && expiracion !== null ) {
+
 			if( fechaActual >= expiracion ) {
-				/* Swal.fire({
-					title: "Error!",
-					text: "La sesión expiró. Por favor, inicia sesión de nuevo.",
-					icon: 'error',
-				}); */
+
+				this.alerts.alerta( "Error!", "La sesión expiró. Por favor, inicia sesión de nuevo.", 'error' );
+
 				this.show = false;
-				localStorage.removeItem("usuarioToken");
-				localStorage.removeItem("expiracion");
+				localStorage.removeItem( "usuarioToken" );
+				localStorage.removeItem( "expiracion" );
+
 				return false;
+
 			} else {
+
 				this.show = true;
 				return true;
+
 			}
+
 		} else {
+
 			this.show = false;
 			return false;
+
 		}
 
 	}
@@ -51,38 +61,50 @@ export class LoginService {
 	login( usuario: string, contrasena: string ): Observable<any> {
 
 		const params = new HttpParams()
-			.set( 'usuario', usuario )
-			.set( 'contrasena', contrasena );
+				.set( 'usuario', usuario )
+				.set( 'contrasena', contrasena );
 
 		return this.http.post( `${ this.urlBase }/login`, params )
 						.pipe( 
 							tap( data => {
+
 									let token = data[ 'token' ];
 									let tokenDecode = jwt_decode( data[ 'token' ] )
 									
 									const fechaExpiracion = new Date( 0 ); 
 									fechaExpiracion.setUTCSeconds( tokenDecode['exp'] );
 
-									localStorage.setItem("usuarioToken", token );
-									localStorage.setItem("expiracion", fechaExpiracion.toString() );
+									localStorage.setItem( "usuarioToken", token );
+									localStorage.setItem( "expiracion", fechaExpiracion.toString() );
 
 									this.show = true;
-									this.router.navigate(['home']); 
-
-									console.log( token );
-									console.log( fechaExpiracion );
+									this.alerts.alerta( "Hecho!", "Se inició la sesión.", 'success', 2000 );
+									this.router.navigate([ 'home' ]); 
+									
 								},
 								err => {
-									Swal.fire({
-										title: "Error!" ,
-										text: `${err['error'].token}.`,
-										icon: 'error',
-									});
+									this.alerts.alerta( "Error!", `${err['error'].token}.`, 'error' );
 								}
 							)
-							
 						);
-		
+
+	}
+
+	logout() {
+
+		localStorage.removeItem( "usuarioToken" );
+		localStorage.removeItem( "expiracion" );
+
+		this.alerts.alerta( "Hecho!", "Se cerró la sesión.", 'success', 2000 );
+		this.router.navigate([ 'login' ]);
+
+	}
+
+	getToken(): string {
+
+		this.token = localStorage.getItem( "usuarioToken" );
+		return this.token;
+
 	}
 
 }

@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 ml-auto mr-auto col-xs-12 mb-5">
+			<mdb-card cascade="true">
+				<!--Card image-->
+				<div class="view view-cascade overlay waves-light" mdbWavesEffect>
+					<br>
+					<img class="rounded img-fluid alinear" *ngIf="heroe.rutaImagen !== null"
+						src="http://192.168.1.5:8080/heroes-api/getImage/{{ heroe.rutaImagen }}"
+						alt="imagen {{ heroe.nombre }}">
+					<a>
+						<div class="mask rgba-white-slight"></div>
+					</a>
+				</div>
+				<!--/Card image-->
+				<mdb-card-body cascade="true" class="text-center">
+					<!--Card content-->
+					<h4 class="card-title">
+						<strong>{{ heroe.nombre }}</strong>
+					</h4>
+					<h5>
+						<mdb-icon fas icon="house-damage"></mdb-icon> {{ heroe.casa | uppercase }}
+					</h5>
+					<h6>
+						<mdb-icon fas icon="eye"></mdb-icon> {{ heroe.aparicion | date: 'longDate' }}
+					</h6>
+					<mdb-card-text>
+						{{ heroe.biografia }}
+					</mdb-card-text>
+				</mdb-card-body>
+				<!--/.Card content-->
+				<a routerLink="/home" mdbBtn class="volver" type="button" color="success" outline="true" mdbWavesEffect>Volver</a>
+				<br>
+			</mdb-card>
+		</div>
+	</div>
+</div>
