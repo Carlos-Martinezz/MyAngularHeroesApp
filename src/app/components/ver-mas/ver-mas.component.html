@@ -6,8 +6,8 @@
 				<div class="view view-cascade overlay waves-light" mdbWavesEffect>
 					<br>
 					<img class="rounded img-fluid alinear" *ngIf="heroe.rutaImagen !== null"
-						src="http://192.168.1.5:8080/heroes-api/getImage/{{ heroe.rutaImagen }}"
-						alt="imagen {{ heroe.nombre }}">
+						 [src]="heroe.rutaImagen | imagen"
+						 alt="imagen {{ heroe.nombre }}">
 					<a>
 						<div class="mask rgba-white-slight"></div>
 					</a>
@@ -29,9 +29,13 @@
 					</mdb-card-text>
 				</mdb-card-body>
 				<!--/.Card content-->
-				<a routerLink="/home" mdbBtn class="volver" type="button" color="success" outline="true" mdbWavesEffect>Volver</a>
+				<div class="mr-auto ml-auto">
+					<a routerLink="/home" mdbBtn type="button" color="primary" outline="true" mdbWavesEffect>Volver</a>
+					<a routerLink="/home" mdbBtn type="button" color="success" mdbWavesEffect>Editar</a>
+					<button mdbBtn type="button" color="danger" (click)="eliminarHeroe()" mdbWavesEffect>Eliminar</button>
+				</div>
 				<br>
-			</mdb-card>
+			</mdb-card>	
 		</div>
 	</div>
 </div>

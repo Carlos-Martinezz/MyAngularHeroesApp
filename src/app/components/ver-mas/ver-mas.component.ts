@@ -10,6 +10,7 @@ import { HeroesService } from 'src/app/services/heroes.service';
 })
 export class VerMasComponent implements OnInit {
 
+	private id: number;
 	public heroe: Heroe = {
 		id: null,
 		nombre: null,
@@ -19,18 +20,20 @@ export class VerMasComponent implements OnInit {
 		casa: null,
 	};
 
-	private id: number;
-
 	constructor( private activatedRoute: ActivatedRoute,
 				 private heroesService: HeroesService ) {
 		activatedRoute.params.subscribe( param => {
 			this.id = param.id;
-			this.heroesService.getHeroe( this.id ).subscribe( heroe => this.heroe = heroe );
+			this.heroesService.getAllHeroesOrHeroe( this.id ).subscribe( heroe => this.heroe = heroe );
 		});
 	}
 
 	ngOnInit(): void {
 		
+	}
+
+	public eliminarHeroe() {
+		this.heroesService.deleteHeroe( this.id ).subscribe();
 	}
 
 }

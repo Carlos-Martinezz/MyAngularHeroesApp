@@ -3,7 +3,7 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 
 /* Idioma */
 import localeEs from '@angular/common/locales/es';
-import { registerLocaleData } from '@angular/common';
+import { DatePipe, registerLocaleData } from '@angular/common';
 registerLocaleData(localeEs, 'es');
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,6 +37,7 @@ import { LoginGuard } from './auth/login.guard';
   ],
   providers: [
     LoginGuard,
+    DatePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthorizationInterceptor,

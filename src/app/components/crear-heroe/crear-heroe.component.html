@@ -11,7 +11,7 @@
 				<!--Card content-->
 				<mdb-card-body class="px-lg-5 pt-0">
 					<!-- Form -->
-					<form [formGroup]="formGroup" style="color: #757575;">
+					<form autocomplete="off" [formGroup]="formGroup" class="formColor">
 						<!-- Nombre -->
 						<div class="md-form">
 							<input name="nombre"
@@ -19,23 +19,29 @@
 								   type="text" 
 								   id="nombre" 
 								   class="form-control" 
+								   required
+								   minlength="3"
 								   mdbInput>
-							<label for="nombre">Nombre</label>
+							<label for="nombre">Nombre </label>
+							<span *ngIf="formGroup.get('nombre').hasError('required') && formGroup.get('nombre').pristine === false" class="messageAlert">El nombre es requerido</span>
+							<span *ngIf="formGroup.get('nombre').hasError('minlength') && formGroup.get('nombre').pristine === false" class="messageAlert">El nombre debe ser de al menos 3 caracteres</span>
 						</div>
 						<!-- Biografía -->
 						<div class="md-form">
                             <textarea  name="biografia"
-                                    rows="3"
+                                    rows="2"
 									formControlName="biografia"
 									type="text" 
 									id="biografia" 
 									class="md-textarea form-control" 
                                     mdbInput></textarea>
 							<label for="biografia">Biografía</label>
+							<span *ngIf="formGroup.get('biografia').hasError('required') && !formGroup.get('biografia').pristine" class="messageAlert">La biografía es requerida</span>
+							<span *ngIf="formGroup.get('biografia').hasError('minlength') && !formGroup.get('biografia').pristine" class="messageAlert">La biografía debe ser de al menos 80 caracteres</span>
                         </div>
                         <!-- Imagen -->
                         <div class="md-form">
-                            Selecciona una imagen
+                            Selecciona una imagen (Opcional)
                             <br>
                             <br>
                             <input  name="imagen"
@@ -43,7 +49,8 @@
                                     type="file" 
                                     id="imagen" 
                                     class="file-path"
-                                    mdbInput
+									mdbInput
+									(change)="changeArchivo($event)"
                                     >  
                         </div>
                         <!-- Aparición -->

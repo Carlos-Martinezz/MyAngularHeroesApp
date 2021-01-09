@@ -12,11 +12,9 @@ export class HomeComponent implements OnInit {
 	public heroes: Heroe[];
 
 	constructor( private heroeService: HeroesService ) { 
-		this.heroeService.getAllHeroes().subscribe( heroes => {
+		this.heroeService.getAllHeroesOrHeroe().subscribe( heroes => {
 			this.heroes = heroes;
-			console.log( this.heroes );
 		});
-		
 	}
 
 	ngOnInit(): void {

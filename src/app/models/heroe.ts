@@ -3,6 +3,6 @@ export interface Heroe {
     nombre: string;
     biografia: string;
     rutaImagen: string;
-    aparicion: Date;
+    aparicion: any;
     casa: string;
 }
