@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Heroe } from 'src/app/models/heroe';
+import { HeroesService } from 'src/app/services/heroes.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -9,8 +11,11 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class NavbarComponent implements OnInit {
 
+	public busqueda: string = "";
+	public heroes: Heroe[] = [];
+
 	constructor( public loginService: LoginService, 
-				 private router: Router ) {
+				 private heroesService: HeroesService ) {
 
 	}
 
@@ -20,6 +25,18 @@ export class NavbarComponent implements OnInit {
 
 	logout() {
 		this.loginService.logout();
+	}
+
+	buscarHeroes() {
+
+		let nombre = this.busqueda.trim();
+
+		if( nombre !== "" ) {
+			this.heroesService.getHeroesForName( nombre ).subscribe( heroes => this.heroes = heroes );
+		}
+		
+		return;
+		
 	}
 
 }

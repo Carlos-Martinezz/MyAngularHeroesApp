@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -24,7 +24,7 @@ export class HeroesService {
 	getAllHeroesOrHeroe( id?: number ): Observable<any> {
 		
 		let heroe: Heroe;
-		let heroes: Heroe[]; 
+		let heroes: any; 
 
 		let response = id ? heroe : heroes;
 
@@ -40,6 +40,10 @@ export class HeroesService {
 
 	}
 
+	getHeroesForName( nombre: string ): Observable<Heroe[]> {
+		return this.http.get<Heroe[]>(`${this.urlBase }/getHeroesForName/${ nombre }`);
+	}
+
 	newHeroe( formData: FormData ): Observable<any> {
 				
 		return this.http.post( `${ this.urlBase }/saveHeroe`, formData, { responseType:'text' } )
@@ -49,7 +53,7 @@ export class HeroesService {
 									this.alerts.alerta( "Hecho!", `${ data }.`, 'success');
 								},
 								err => {
-									this.alerts.alerta( "Error!", "Ocurrió un error al guardar el héroe", 'error');
+									this.alerts.alerta( "Error!", "Ocurrió un error al guardar el héroe.", 'error');
 								}
 							)
 						);
@@ -65,7 +69,25 @@ export class HeroesService {
 									this.alerts.alerta( "Hecho!", `Se eliminó el héroe: ${ heroeRes.nombre }`, 'success');
 									this.router.navigate(['/home']);
 								},
-								err => this.alerts.alerta( "Error!", "No se pudo eliminar el héroe", 'error')
+								err => this.alerts.alerta( "Error!", "No se pudo eliminar el héroe.", 'error')
+							)
+						);
+
+	}
+
+	updateHeroe( heroe: Heroe ): Observable<Heroe> {
+		
+		let jsonHeroe = JSON.stringify( heroe );
+		let headers = new HttpHeaders().set('Content-Type','application/json');
+
+		return this.http.patch<Heroe>( `${ this.urlBase }/updateHeroe`, jsonHeroe, { headers: headers } )
+						.pipe(
+							tap(
+								heroe => {
+									this.alerts.alerta( "Hecho!", `Se actualizó: ${ heroe.nombre }`, 'success');
+									this.router.navigate(['/verMas', heroe.id]);
+								},
+								err => this.alerts.alerta( "Error!", "No se pudo actualizar el héroe.", 'error')
 							)
 						);
 

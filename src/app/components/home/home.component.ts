@@ -11,8 +11,8 @@ export class HomeComponent implements OnInit {
 	
 	public heroes: Heroe[];
 
-	constructor( private heroeService: HeroesService ) { 
-		this.heroeService.getAllHeroesOrHeroe().subscribe( heroes => {
+	constructor( private heroesService: HeroesService ) { 
+		this.heroesService.getAllHeroesOrHeroe().subscribe( heroes => {
 			this.heroes = heroes;
 		});
 	}

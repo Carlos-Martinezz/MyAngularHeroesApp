@@ -10,7 +10,7 @@ import { HeroesService } from 'src/app/services/heroes.service';
 })
 export class VerMasComponent implements OnInit {
 
-	private id: number;
+	public id: number;
 	public heroe: Heroe = {
 		id: null,
 		nombre: null,

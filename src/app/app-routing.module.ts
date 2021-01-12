@@ -15,6 +15,7 @@ const ROUTES: Routes = [
   { path: "home", component: HomeComponent, canActivate: [ LoginGuard ] },
   { path: "verMas/:id", component: VerMasComponent, canActivate: [ LoginGuard ] },
   { path: "crearHeroe", component: CrearHeroeComponent, canActivate: [ LoginGuard ] },
+  { path: "crearHeroe/:id", component: CrearHeroeComponent, canActivate: [ LoginGuard ] }, /* Sirve para actualizar un héroe, con el mismo FORM */
   { path: '**',   redirectTo: '/login', pathMatch: 'full' }
 ];
 

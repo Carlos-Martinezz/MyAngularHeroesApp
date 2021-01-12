@@ -12,7 +12,7 @@
         <ul class="navbar-nav ml-auto">
             <form class="form-inline waves-light" mdbWavesEffect *ngIf="loginService.show">
                 <div class="md-form my-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
+                    <input class="form-control mr-sm-2" type="text" [(ngModel)]='busqueda' name="busqueda" (keyup)="buscarHeroes()" placeholder="Buscar">
                 </div>
             </form>
             <li class="nav-item" *ngIf="loginService.show">

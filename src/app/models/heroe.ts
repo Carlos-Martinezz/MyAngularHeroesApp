@@ -1,8 +1,9 @@
 export interface Heroe {
-    id: number;
+    id?: number;
     nombre: string;
     biografia: string;
-    rutaImagen: string;
+    imagen?: File;
+    rutaImagen?: string;
     aparicion: any;
-    casa: string;
+    casa?: string;
 }
