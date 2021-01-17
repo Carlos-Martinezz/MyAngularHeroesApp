@@ -8,6 +8,7 @@ import jwt_decode from "jwt-decode";
 
 import { Alerts } from '../utils/alerts.utils';
 import { environment } from 'src/environments/environment';
+import { Heroe } from '../models/heroe';
 
 @Injectable({
 	providedIn: 'root'
@@ -88,6 +89,26 @@ export class LoginService {
 							)
 						);
 
+	}
+
+	signin( usuario: string, contrasena: string ): Observable<any> {
+
+		const params = new HttpParams()
+				.set( 'usuario', usuario )
+				.set( 'contrasena', contrasena );
+
+		return this.http.post<Heroe>( `${ this.urlBase }/crearUsuario`, params )
+						.pipe( 
+							tap( data => {
+									console.log( data.usuario )
+									this.alerts.alerta( "Hecho!", `Se creó el usuario: ${ data.usuario }`, 'success' ); 
+									
+								},
+								err => {
+									this.alerts.alerta( "Error!", `${ err.error.token }`, 'error' );
+								}
+							)
+						);
 	}
 
 	logout() {

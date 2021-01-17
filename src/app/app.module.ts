@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ComponentsModule } from './components/components.module';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { AppComponent } from './app.component';
 import { AuthorizationInterceptor } from './auth/authorization.interceptor';
@@ -33,7 +34,8 @@ import { LoginGuard } from './auth/login.guard';
     FormsModule,
     AppRoutingModule,
     ComponentsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatAutocompleteModule
   ],
   providers: [
     LoginGuard,

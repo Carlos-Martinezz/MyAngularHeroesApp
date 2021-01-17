@@ -4,18 +4,17 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
-	selector: 'app-login',
-	templateUrl: './login.component.html',
-	styleUrls: ['./login.component.scss']
+	selector: 'app-signin',
+	templateUrl: './signin.component.html',
+	styleUrls: ['./signin.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class SigninComponent implements OnInit {
 
 	public formGroup: FormGroup;
 
 	constructor( private formBuilder: FormBuilder,
 				 private loginService: LoginService,
 				 private router: Router ) { 
-
 		/* Validamos que no haya un sesión iniciada */
 		if( this.loginService.validarSesion() ) {
 			this.router.navigate(['home']);
@@ -30,11 +29,9 @@ export class LoginComponent implements OnInit {
 
 	private buildForm() {
 
-		const usuario = "Carlos";
-
 		this.formGroup = this.formBuilder.group({
-			usuario: [ usuario, Validators.required ],
-			contrasena: [ "12345", Validators.required ]
+			usuario: [ "", Validators.required ],
+			contrasena: [ "", Validators.required ]
 		});
 
 	}
@@ -48,8 +45,9 @@ export class LoginComponent implements OnInit {
 			return;
 		}
 
-		this.loginService.login( usuario, contrasena ).subscribe();
+		this.loginService.signin( usuario, contrasena ).subscribe( );
 		
 	}
+
 
 }

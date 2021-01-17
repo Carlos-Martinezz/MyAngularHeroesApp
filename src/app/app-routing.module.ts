@@ -8,10 +8,12 @@ import { CrearHeroeComponent } from './components/crear-heroe/crear-heroe.compon
 /* Components */
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { SigninComponent } from './components/signin/signin.component';
 import { VerMasComponent } from './components/ver-mas/ver-mas.component';
 
 const ROUTES: Routes = [
   { path: "login", component: LoginComponent },
+  { path: "signin", component: SigninComponent },
   { path: "home", component: HomeComponent, canActivate: [ LoginGuard ] },
   { path: "verMas/:id", component: VerMasComponent, canActivate: [ LoginGuard ] },
   { path: "crearHeroe", component: CrearHeroeComponent, canActivate: [ LoginGuard ] },

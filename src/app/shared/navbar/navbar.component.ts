@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
 
 	public busqueda: string = "";
 	public heroes: Heroe[] = [];
-
+		
 	constructor( public loginService: LoginService, 
 				 private heroesService: HeroesService ) {
 
@@ -30,13 +30,14 @@ export class NavbarComponent implements OnInit {
 	buscarHeroes() {
 
 		let nombre = this.busqueda.trim();
-
-		if( nombre !== "" ) {
+		
+		if( nombre !== "" && nombre.length > 0 ) {
 			this.heroesService.getHeroesForName( nombre ).subscribe( heroes => this.heroes = heroes );
+		} else {
+			this.heroes = [];
 		}
 		
-		return;
-		
+		return;	
 	}
 
 }
