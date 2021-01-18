@@ -1,5 +1,5 @@
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-primary mb-5" [containerInside]="false">
-    <mdb-navbar-brand class="mr-5"><a class="navbar-brand" href="#">Héroes App</a></mdb-navbar-brand>
+    <mdb-navbar-brand class="mr-5"><a class="navbar-brand" routerLink="/">Héroes App</a></mdb-navbar-brand>
     <links>
         <ul class="navbar-nav mr-auto" *ngIf="loginService.show">
             <li class="nav-item" routerLinkActive="active">
@@ -10,12 +10,25 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <!-- <form class="form-inline waves-light" mdbWavesEffect *ngIf="loginService.show" autocomplete="off">
-                <div class="md-form my-0">
-                    <input id="autoComplete" class="form-control mr-sm-" type="text" [(ngModel)]='busqueda' name="busqueda" (keyup)="buscarHeroes()" placeholder="Buscar" >
-                </div>
-            </form> -->
             <form class="form-inline waves-light" mdbWavesEffect *ngIf="loginService.show" autocomplete="off">
+                <div class="md-form my-0">
+                    <input id="autoComplete" 
+                            class="form-control mr-sm-2" 
+                            type="text" 
+                            [(ngModel)]='busqueda' 
+                            name="busqueda" 
+                            matInput
+                            (keyup)="buscarHeroes()" 
+                            [matAutocomplete]="auto"
+                            placeholder="Buscar" >
+                </div>
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let heroe of heroes">
+                      <a class="results" [routerLink]="['/verMas', heroe.id]">{{ heroe.nombre }}</a>
+                    </mat-option>
+                </mat-autocomplete>
+            </form>
+           <!--  <form class="form-inline waves-light" mdbWavesEffect *ngIf="loginService.show" autocomplete="off">
                 <input type="text"
                 class="form-control"
                        placeholder="Buscar héroes"
@@ -24,12 +37,8 @@
                        [(ngModel)]='busqueda' 
                        name="busqueda"
                        [matAutocomplete]="auto">
-                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                  <mat-option *ngFor="let heroe of heroes">
-                    <a class="results" [routerLink]="['/verMas', heroe.id]">{{ heroe.nombre }}</a>
-                  </mat-option>
-                </mat-autocomplete>
-          </form> 
+                
+          </form>  -->
             <li class="nav-item" *ngIf="loginService.show">
                 <a routerLink="/login" (click)="logout()" class="nav-link waves-light" mdbWavesEffect>
                     <mdb-icon fas icon="sign-out-alt"></mdb-icon>Cerrar Sesión

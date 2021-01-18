@@ -93,4 +93,8 @@ export class HeroesService {
 
 	}
 
+	getCasas(): Observable<any> {
+		return this.http.get(`${ this.urlBase }/getCasas`);
+	}
+
 }

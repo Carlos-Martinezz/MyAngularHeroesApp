@@ -1,4 +1,10 @@
 <div class="container">
+	<div class="row mb-5">
+		<div class="col-md-12 text-center">
+			<h4 class="m-2">Casas</h4>
+			<mdb-badge class="m-2" color="indigo" *ngFor="let casa of casas">{{ casa }}</mdb-badge>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-md-4 ml-auto mr-auto col-sm-4 col-xs-12 mb-5" *ngFor="let heroe of heroes">
 			<mdb-card class="text-center">
@@ -7,13 +13,11 @@
 					alt="imagen {{ heroe.nombre }}"></mdb-card-img>
 				<!--Card content-->
 				<mdb-card-body>
-
 					<!--Title-->
 					<mdb-card-title>
 						<h4>{{ heroe.nombre }} | <small class="">{{ heroe.casa | uppercase }}</small></h4>
 						
 					</mdb-card-title>
-
 					<!--Text-->
 					<mdb-card-text>
 						{{ heroe.biografia | slice: 0: 80 }}...
@@ -21,7 +25,6 @@
 					<a [routerLink]="['/verMas', heroe.id ]" mdbBtn color="primary" mdbWavesEffect>Ver más</a>
 				</mdb-card-body>
 			</mdb-card>
-			
 		</div>
 	</div>
 </div>

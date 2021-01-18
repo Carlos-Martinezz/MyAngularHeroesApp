@@ -12,6 +12,8 @@ import { VerMasComponent } from './ver-mas/ver-mas.component';
 import { ImagenPipe } from '../pipes/imagen.pipe';
 import { CrearHeroeComponent } from './crear-heroe/crear-heroe.component';
 import { SigninComponent } from './signin/signin.component';
+import { BienvenidoComponent } from './bienvenido/bienvenido.component';
+import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { SigninComponent } from './signin/signin.component';
     VerMasComponent,
     ImagenPipe,
     CrearHeroeComponent,
-    SigninComponent
+    SigninComponent,
+    BienvenidoComponent,
+    NoEncontradoComponent
   ],
   imports: [
     CommonModule,

@@ -18,14 +18,12 @@ import { AppComponent } from './app.component';
 import { AuthorizationInterceptor } from './auth/authorization.interceptor';
 
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import { LoginGuard } from './auth/login.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    FooterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
