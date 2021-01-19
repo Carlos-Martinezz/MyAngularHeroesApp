@@ -25,7 +25,6 @@ export class HeroesService {
 		
 		let heroe: Heroe;
 		let heroes: any; 
-
 		let response = id ? heroe : heroes;
 
 		return this.http.get<typeof response>( id ? `${ this.urlBase }/getHeroe/${ id }` : `${ this.urlBase }/getAll`)
@@ -41,7 +40,7 @@ export class HeroesService {
 	}
 
 	getHeroesForName( nombre: string ): Observable<Heroe[]> {
-		return this.http.get<Heroe[]>(`${this.urlBase }/getHeroesForName/${ nombre }`);
+		return this.http.get<Heroe[]>(`${ this.urlBase }/getHeroesForName/${ nombre }`);
 	}
 
 	newHeroe( formData: FormData ): Observable<any> {
@@ -50,10 +49,10 @@ export class HeroesService {
 						.pipe(
 							tap(
 								data => { 
-									this.alerts.alerta( "Hecho!", `${ data }.`, 'success');
+									this.alerts.alerta("Hecho!", `${ data }.`, 'success');
 								},
 								err => {
-									this.alerts.alerta( "Error!", "Ocurrió un error al guardar el héroe.", 'error');
+									this.alerts.alerta("Error!", "Ocurrió un error al guardar el héroe.", 'error');
 								}
 							)
 						);
@@ -66,7 +65,7 @@ export class HeroesService {
 						.pipe(
 							tap(
 								heroeRes => {
-									this.alerts.alerta( "Hecho!", `Se eliminó el héroe: ${ heroeRes.nombre }`, 'success');
+									this.alerts.alerta("Hecho!", `Se eliminó el héroe: ${ heroeRes.nombre }`, 'success');
 									this.router.navigate(['/home']);
 								},
 								err => this.alerts.alerta( "Error!", "No se pudo eliminar el héroe.", 'error')
@@ -84,10 +83,10 @@ export class HeroesService {
 						.pipe(
 							tap(
 								heroe => {
-									this.alerts.alerta( "Hecho!", `Se actualizó: ${ heroe.nombre }`, 'success');
+									this.alerts.alerta("Hecho!", `Se actualizó: ${ heroe.nombre }`, 'success');
 									this.router.navigate(['/verMas', heroe.id]);
 								},
-								err => this.alerts.alerta( "Error!", "No se pudo actualizar el héroe.", 'error')
+								err => this.alerts.alerta("Error!", "No se pudo actualizar el héroe.", 'error')
 							)
 						);
 

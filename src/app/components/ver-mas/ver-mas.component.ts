@@ -8,7 +8,7 @@ import { HeroesService } from 'src/app/services/heroes.service';
 	templateUrl: './ver-mas.component.html',
 	styleUrls: ['./ver-mas.component.scss']
 })
-export class VerMasComponent implements OnInit {
+export class VerMasComponent {
 
 	public id: number;
 	public heroe: Heroe = {
@@ -26,10 +26,6 @@ export class VerMasComponent implements OnInit {
 			this.id = param.id;
 			this.heroesService.getAllHeroesOrHeroe( this.id ).subscribe( heroe => this.heroe = heroe );
 		});
-	}
-
-	ngOnInit(): void {
-		
 	}
 
 	public eliminarHeroe() {

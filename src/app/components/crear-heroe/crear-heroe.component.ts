@@ -7,8 +7,7 @@ import { HeroesService } from 'src/app/services/heroes.service';
 
 @Component({
 	selector: 'app-crear-heroe',
-	templateUrl: './crear-heroe.component.html',
-	styleUrls: ['./crear-heroe.component.scss']
+	templateUrl: './crear-heroe.component.html'
 })
 export class CrearHeroeComponent implements OnInit {
 
@@ -28,7 +27,9 @@ export class CrearHeroeComponent implements OnInit {
 				 private activatedRoute: ActivatedRoute,
 				 private heroesService: HeroesService,
 				 private datePipe: DatePipe ) { 
+
 		activatedRoute.params.subscribe( param => {
+
 			if( param.id ) {
 
 				/* Cambiamos el aspecto del formulario */
@@ -53,7 +54,9 @@ export class CrearHeroeComponent implements OnInit {
 
 				});
 			}
+
 		});
+
 	}
 
 	ngOnInit(): void {
@@ -61,8 +64,7 @@ export class CrearHeroeComponent implements OnInit {
 	}
 
 	/* Build Form */
-	private buildForm() {
-			
+	private buildForm() {	
 		this.formGroup = this.formBuilder.group({
 			nombre: new FormControl( "", [ Validators.required, Validators.minLength( 3 ) ]), //NOMBRE
 			biografia: new FormControl( "", [ Validators.required, Validators.minLength( 80 ) ]),
@@ -70,7 +72,6 @@ export class CrearHeroeComponent implements OnInit {
 			aparicion: new FormControl( "", [ Validators.required ] ),
 			casa: new FormControl( "", [ Validators.required ] )
 		});
-
 	}
 
 	/* Detectamos cambios en el campo de la imagen, y la cargamos */
@@ -96,11 +97,11 @@ export class CrearHeroeComponent implements OnInit {
 
 			this.heroe = {
 				id: this.id,
-				nombre: this.formGroup.get('nombre').value,
-				biografia: this.formGroup.get('biografia').value,
-				aparicion: this.convertirFecha( this.formGroup.get('aparicion').value ),
+				nombre: this.formGroup.get( 'nombre' ).value,
+				biografia: this.formGroup.get( 'biografia' ).value,
+				aparicion: this.convertirFecha( this.formGroup.get( 'aparicion' ).value ),
 				rutaImagen: "",
-				casa: this.formGroup.get('casa').value
+				casa: this.formGroup.get( 'casa' ).value
 			};
 
 			this.heroesService.updateHeroe( this.heroe ).subscribe();
@@ -110,11 +111,11 @@ export class CrearHeroeComponent implements OnInit {
 
 		const formData = new FormData();
 
-		formData.append('nombre', this.formGroup.get('nombre').value);
-		formData.append('biografia', this.formGroup.get('biografia').value);
+		formData.append('nombre', this.formGroup.get( 'nombre' ).value);
+		formData.append('biografia', this.formGroup.get( 'biografia' ).value);
 		formData.append('file', this.imagen);
-		formData.append('aparicion', this.convertirFecha( this.formGroup.get('aparicion').value ) );
-		formData.append('casa', this.formGroup.get('casa').value);
+		formData.append('aparicion', this.convertirFecha( this.formGroup.get( 'aparicion' ).value ) );
+		formData.append('casa', this.formGroup.get( 'casa' ).value);
 
 		this.heroesService.newHeroe( formData ).subscribe( data => this.formGroup.reset() );
 		
@@ -122,7 +123,7 @@ export class CrearHeroeComponent implements OnInit {
 
 	/* Convertir dd/MM/yyyy */
 	private convertirFecha( fecha: string ): any {
-		return this.datePipe.transform( fecha , "dd/MM/yyyy");
+		return this.datePipe.transform(fecha , "dd/MM/yyyy");
 	}
 
 }

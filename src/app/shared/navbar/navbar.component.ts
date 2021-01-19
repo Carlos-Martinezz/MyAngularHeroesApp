@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { Heroe } from 'src/app/models/heroe';
 import { HeroesService } from 'src/app/services/heroes.service';
 import { LoginService } from 'src/app/services/login.service';
@@ -9,17 +8,13 @@ import { LoginService } from 'src/app/services/login.service';
 	templateUrl: './navbar.component.html',
 	styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
 	public busqueda: string = "";
 	public heroes: Heroe[] = [];
 		
 	constructor( public loginService: LoginService, 
 				 private heroesService: HeroesService ) {
-
-	}
-
-	ngOnInit(): void {
 
 	}
 

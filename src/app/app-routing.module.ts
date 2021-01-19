@@ -14,22 +14,22 @@ import { SigninComponent } from './components/signin/signin.component';
 import { VerMasComponent } from './components/ver-mas/ver-mas.component';
 
 const ROUTES: Routes = [
-  { path: "", component: BienvenidoComponent },
-  { path: "login", component: LoginComponent },
-  { path: "signin", component: SigninComponent },
-  { path: "home", component: HomeComponent, canActivate: [ LoginGuard ] },
-  { path: "verMas/:id", component: VerMasComponent, canActivate: [ LoginGuard ] },
-  { path: "crearHeroe", component: CrearHeroeComponent, canActivate: [ LoginGuard ] },
-  { path: "crearHeroe/:id", component: CrearHeroeComponent, canActivate: [ LoginGuard ] }, /* Sirve para actualizar un héroe, con el mismo FORM */
-  { path: '**',   component: NoEncontradoComponent, pathMatch: 'full' }
+	{ path: "", component: BienvenidoComponent },
+	{ path: "login", component: LoginComponent },
+	{ path: "signin", component: SigninComponent },
+	{ path: "home", component: HomeComponent, canActivate: [ LoginGuard ] },
+	{ path: "verMas/:id", component: VerMasComponent, canActivate: [ LoginGuard ] },
+	{ path: "crearHeroe", component: CrearHeroeComponent, canActivate: [ LoginGuard ] },
+	{ path: "crearHeroe/:id", component: CrearHeroeComponent, canActivate: [ LoginGuard ] }, /* Sirve para actualizar un héroe, con el mismo FORM */
+	{ path: '**', component: NoEncontradoComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(ROUTES, { useHash: true } )
-  ],
-  exports: [
-    RouterModule
-  ]
+	imports: [
+		RouterModule.forRoot( ROUTES, { useHash: true } )
+	],
+	exports: [
+		RouterModule
+	]
 })
 export class AppRoutingModule { }

@@ -42,19 +42,14 @@ export class LoginService {
 				localStorage.removeItem( "expiracion" );
 
 				return false;
-
 			} else {
-
 				this.show = true;
 				return true;
-
 			}
 
 		} else {
-
 			this.show = false;
 			return false;
-
 		}
 
 	}
@@ -75,37 +70,37 @@ export class LoginService {
 									const fechaExpiracion = new Date( 0 ); 
 									fechaExpiracion.setUTCSeconds( tokenDecode['exp'] );
 
-									localStorage.setItem( "usuarioToken", token );
-									localStorage.setItem( "expiracion", fechaExpiracion.toString() );
+									localStorage.setItem("usuarioToken", token );
+									localStorage.setItem("expiracion", fechaExpiracion.toString() );
 
 									this.show = true;
-									this.alerts.alerta( "Hecho!", "Se inició la sesión.", 'success', 2000 );
+									this.alerts.alerta("Hecho!", "Se inició la sesión.", 'success', 2000);
 									this.router.navigate([ 'home' ]); 
 									
 								},
 								err => {
-									this.alerts.alerta( "Error!", `${err['error'].token}.`, 'error' );
+									this.alerts.alerta("Error!", `${err['error'].token}.`, 'error');
 								}
 							)
 						);
 
 	}
 
-	signin( usuario: string, contrasena: string ): Observable<any> {
+	signin(usuario: string, contrasena: string): Observable<any> {
 
 		const params = new HttpParams()
-				.set( 'usuario', usuario )
-				.set( 'contrasena', contrasena );
+				.set('usuario', usuario)
+				.set('contrasena', contrasena);
 
 		return this.http.post<Heroe>( `${ this.urlBase }/crearUsuario`, params )
 						.pipe( 
 							tap( data => {
 									console.log( data.usuario )
-									this.alerts.alerta( "Hecho!", `Se creó el usuario: ${ data.usuario }`, 'success' ); 
+									this.alerts.alerta("Hecho!", `Se creó el usuario: ${ data.usuario }`, 'success'); 
 									
 								},
 								err => {
-									this.alerts.alerta( "Error!", `${ err.error.token }`, 'error' );
+									this.alerts.alerta("Error!", `${ err.error.token }`, 'error');
 								}
 							)
 						);
@@ -116,16 +111,14 @@ export class LoginService {
 		localStorage.removeItem( "usuarioToken" );
 		localStorage.removeItem( "expiracion" );
 
-		this.alerts.alerta( "Hecho!", "Se cerró la sesión.", 'success', 2000 );
+		this.alerts.alerta("Hecho!", "Se cerró la sesión.", 'success', 2000);
 		this.router.navigate([ 'login' ]);
 
 	}
 
 	getToken(): string {
-
 		this.token = localStorage.getItem( "usuarioToken" );
 		return this.token;
-
 	}
 
 }

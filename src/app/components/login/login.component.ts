@@ -5,8 +5,7 @@ import { LoginService } from 'src/app/services/login.service';
 
 @Component({
 	selector: 'app-login',
-	templateUrl: './login.component.html',
-	styleUrls: ['./login.component.scss']
+	templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
 
@@ -48,7 +47,7 @@ export class LoginComponent implements OnInit {
 			return;
 		}
 
-		this.loginService.login( usuario, contrasena ).subscribe();
+		this.loginService.login(usuario, contrasena).subscribe();
 		
 	}
 

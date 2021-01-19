@@ -4,8 +4,7 @@ import { HeroesService } from 'src/app/services/heroes.service';
 
 @Component({
 	selector: 'app-home',
-	templateUrl: './home.component.html',
-	styleUrls: ['./home.component.scss']
+	templateUrl: './home.component.html'
 })
 export class HomeComponent {
 	

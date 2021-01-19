@@ -21,33 +21,35 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { LoginGuard } from './auth/login.guard';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MDBBootstrapModule.forRoot(),
-    FormsModule,
-    AppRoutingModule,
-    ComponentsModule,
-    HttpClientModule,
-    MatAutocompleteModule
-  ],
-  providers: [
-    LoginGuard,
-    DatePipe,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthorizationInterceptor,
-      multi: true
-    },
-    {
-      provide: LOCALE_ID,
-      useValue: 'es'
-    }
-  ],
-  bootstrap: [ AppComponent ]
+	declarations: [
+		AppComponent,
+		NavbarComponent
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		MDBBootstrapModule.forRoot(),
+		FormsModule,
+		AppRoutingModule,
+		ComponentsModule,
+		HttpClientModule,
+		MatAutocompleteModule
+	],
+	providers: [
+		LoginGuard,
+		DatePipe,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: AuthorizationInterceptor,
+			multi: true
+		},
+		{
+			provide: LOCALE_ID,
+			useValue: 'es'
+		}
+	],
+	bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule { 
+	
+}
