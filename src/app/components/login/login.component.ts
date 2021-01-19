@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
 		/* Validamos que no haya un sesión iniciada */
 		if( this.loginService.validarSesion() ) {
-			this.router.navigate(['home']);
+			this.router.navigate([ 'home' ]);
 			this.loginService.show = true;
 		} 
 		
@@ -29,11 +29,9 @@ export class LoginComponent implements OnInit {
 
 	private buildForm() {
 
-		const usuario = "Carlos";
-
 		this.formGroup = this.formBuilder.group({
-			usuario: [ usuario, Validators.required ],
-			contrasena: [ "12345", Validators.required ]
+			usuario: [ "", Validators.required ],
+			contrasena: [ "", Validators.required ]
 		});
 
 	}
