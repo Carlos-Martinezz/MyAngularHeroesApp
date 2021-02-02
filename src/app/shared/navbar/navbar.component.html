@@ -28,17 +28,6 @@
                     </mat-option>
                 </mat-autocomplete>
             </form>
-           <!--  <form class="form-inline waves-light" mdbWavesEffect *ngIf="loginService.show" autocomplete="off">
-                <input type="text"
-                class="form-control"
-                       placeholder="Buscar héroes"
-                       matInput
-                       (keyup)="buscarHeroes()"
-                       [(ngModel)]='busqueda' 
-                       name="busqueda"
-                       [matAutocomplete]="auto">
-                
-          </form>  -->
             <li class="nav-item" *ngIf="loginService.show">
                 <a routerLink="/login" (click)="logout()" class="nav-link waves-light" mdbWavesEffect>
                     <mdb-icon fas icon="sign-out-alt"></mdb-icon>Cerrar Sesión
