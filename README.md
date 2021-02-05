@@ -1,6 +1,6 @@
 # MyAngularHeroesApp
 
-Ésta aplicación ha sido creada para consumir el servicio RESTFul de héroes, creado por el mismo autor. Ver: `https://github.com/Carlos-Martinezz/SpringBoot-Heroes-API`
+Ésta aplicación ha sido creada para consumir el servicio RESTFul de héroes, creado por el mismo autor. Ver: **https://github.com/Carlos-Martinezz/SpringBoot-Heroes-API**
 
 ## Instalación
 
