@@ -1,27 +1,23 @@
-# MdbAngularFree
+# MyAngularHeroesApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
+Ésta aplicación ha sido creada para consumir el servicio RESTFul de héroes, creado por el mismo autor. Ver: `https://github.com/Carlos-Martinezz/SpringBoot-Heroes-API`
 
-## Development server
+## Instalación
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Ejecute **npm-install** dentro de la carpeta del proyecto para instalar todas las dependencias que necesita la aplicación para funcionar correctamente.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Ejecución
 
-## Build
+Ejecute **ng-serve** dentro de la carpeta del proyecto para levantar el servidor de Angular y poner en ejecución la aplicación. Podrá verla en **http://localhost:4200**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+Opcionalmente, puede utilizar **ng serve --host 0.0.0.0** para poder acceder a la aplicación desde diferentes clientes en su misma red local. Podrá verla en **http://SuDireccionIp:4200**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Notas
+Puede descargar este repositorio y usarlo para fines no comerciales. 
+Además puede aportar cambios que crea necesarios con el desarrollador.
 
-## Running end-to-end tests
+### Carlos Martínez - &copy; 2021
+Java & Angular Developer
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

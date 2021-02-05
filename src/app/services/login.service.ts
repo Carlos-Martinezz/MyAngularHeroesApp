@@ -103,7 +103,7 @@ export class LoginService {
 									
 								},
 								err => {
-									this.alerts.alerta("Error!", `${err['error'].token}.`, 'error');
+									this.alerts.alerta("Error!", `${err['error'].token}`, 'error');
 									console.log( err );
 								}
 							)

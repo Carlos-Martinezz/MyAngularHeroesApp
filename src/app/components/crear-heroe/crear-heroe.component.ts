@@ -7,7 +7,8 @@ import { HeroesService } from 'src/app/services/heroes.service';
 
 @Component({
 	selector: 'app-crear-heroe',
-	templateUrl: './crear-heroe.component.html'
+	templateUrl: './crear-heroe.component.html',
+	styleUrls: ['./crear-heroe.component.scss']
 })
 export class CrearHeroeComponent implements OnInit {
 

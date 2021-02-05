@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: "http://192.168.1.14:8080/heroes-api"
+  API_URL: "http://localhost:4200/heroes-api" /* URL por defecto */
 };
 
 /*

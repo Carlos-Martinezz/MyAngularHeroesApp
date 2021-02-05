@@ -4,8 +4,7 @@ import { LoginService } from 'src/app/services/login.service';
 
 @Component({
 	selector: 'app-cuenta',
-	templateUrl: './cuenta.component.html',
-	styleUrls: ['./cuenta.component.scss']
+	templateUrl: './cuenta.component.html'
 })
 export class CuentaComponent implements OnInit {
 
