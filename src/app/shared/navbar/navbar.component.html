@@ -28,6 +28,11 @@
                     </mat-option>
                 </mat-autocomplete>
             </form>
+            <li class="nav-item" *ngIf="loginService.show" title="Mi Cuenta" routerLinkActive="active">
+                <a routerLink="/cuenta" class="nav-link waves-light" mdbWavesEffect>
+                    <mdb-icon fas icon="user-cog"></mdb-icon>
+                </a>
+            </li>
             <li class="nav-item" *ngIf="loginService.show">
                 <a routerLink="/login" (click)="logout()" class="nav-link waves-light" mdbWavesEffect>
                     <mdb-icon fas icon="sign-out-alt"></mdb-icon>Cerrar Sesión

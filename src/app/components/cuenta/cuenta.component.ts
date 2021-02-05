@@ -1,24 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
-	selector: 'app-signin',
-	templateUrl: './signin.component.html'
+	selector: 'app-cuenta',
+	templateUrl: './cuenta.component.html',
+	styleUrls: ['./cuenta.component.scss']
 })
-export class SigninComponent implements OnInit {
+export class CuentaComponent implements OnInit {
 
 	public formGroup: FormGroup;
 
 	constructor( private formBuilder: FormBuilder,
-				 private loginService: LoginService,
-				 private router: Router ) { 
-		/* Validamos que no haya un sesión iniciada */
-		if( this.loginService.validarSesion() ) {
-			this.router.navigate(['home']);
-			this.loginService.show = true;
-		} 
+				 private loginService: LoginService ) {  
 		
 	}
 
@@ -30,7 +24,8 @@ export class SigninComponent implements OnInit {
 
 		this.formGroup = this.formBuilder.group({
 			usuario: [ "", Validators.required ],
-			contrasena: [ "", Validators.required ]
+			contrasena: [ "", Validators.required ],
+			nueva: [ "", Validators.required]
 		});
 
 	}
@@ -39,17 +34,17 @@ export class SigninComponent implements OnInit {
 
 		const usuario: string = this.formGroup.value.usuario;
 		const contrasena: string = this.formGroup.value.contrasena;
+		const nueva: string = this.formGroup.value.nueva;
 
-		if( usuario === '' || contrasena === '' ) {
+		if( usuario === '' || contrasena === '' || nueva === '' ) {
 			return;
 		}
 
-		this.loginService.signin( usuario, contrasena ).subscribe( 
+		this.loginService.actualizarUsuario(usuario, contrasena, nueva).subscribe(
 			data => this.formGroup.reset(),
-			err => console.log("Ocurrio un error: ", err)
+			err => console.log( err )
 		);
 		
 	}
-
 
 }

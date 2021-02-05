@@ -13,6 +13,7 @@ import { CrearHeroeComponent } from './crear-heroe/crear-heroe.component';
 import { SigninComponent } from './signin/signin.component';
 import { BienvenidoComponent } from './bienvenido/bienvenido.component';
 import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
+import { CuentaComponent } from './cuenta/cuenta.component';
 
 @NgModule({
 	declarations: [
@@ -23,7 +24,8 @@ import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
 		CrearHeroeComponent,
 		SigninComponent,
 		BienvenidoComponent,
-		NoEncontradoComponent
+		NoEncontradoComponent,
+		CuentaComponent
 	],
 	imports: [
 		CommonModule,

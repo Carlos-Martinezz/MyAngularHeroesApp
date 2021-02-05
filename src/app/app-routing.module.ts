@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginGuard } from './auth/login.guard';
 import { BienvenidoComponent } from './components/bienvenido/bienvenido.component';
 import { CrearHeroeComponent } from './components/crear-heroe/crear-heroe.component';
+import { CuentaComponent } from './components/cuenta/cuenta.component';
 
 /* Components */
 import { HomeComponent } from './components/home/home.component';
@@ -21,6 +22,7 @@ const ROUTES: Routes = [
 	{ path: "verMas/:id", component: VerMasComponent, canActivate: [ LoginGuard ] },
 	{ path: "crearHeroe", component: CrearHeroeComponent, canActivate: [ LoginGuard ] },
 	{ path: "crearHeroe/:id", component: CrearHeroeComponent, canActivate: [ LoginGuard ] }, /* Sirve para actualizar un héroe, con el mismo FORM */
+	{ path: "cuenta", component: CuentaComponent, canActivate: [ LoginGuard ] },
 	{ path: '**', component: NoEncontradoComponent, pathMatch: 'full' }
 ];
 

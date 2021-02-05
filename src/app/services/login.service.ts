@@ -25,6 +25,30 @@ export class LoginService {
 		this.show = false;
 	}
 
+	actualizarUsuario(usuario: string, contrasena: string, nuevaContraseña: string): Observable<any> {
+
+		const params = new HttpParams()
+				.set('usuario', usuario)
+				.set('contrasena', contrasena)
+				.set('nuevaContrasena', nuevaContraseña);
+
+		return this.http.put<Heroe>( `${ this.urlBase }/actualizarUsuario`, params )
+						.pipe( 
+							tap( 
+								data => {
+									this.alerts.alerta("Hecho!", `Se actualizó el usuario: ${ data.usuario }`, 'success', 2000);
+									setTimeout(() => {
+										this.alerts.alerta("Hecho!", "Por favor, vuelve a iniciar sesión.", 'warning', 2000);
+										setTimeout(() => this.logout(), 2000)
+									}, 2000);
+								},
+								err => {
+									this.alerts.alerta("Error!", `${ err.error.token }`, 'error');
+								}
+							)
+						);
+	}
+
 	validarSesion(): boolean {
 
 		const token = localStorage.getItem( "usuarioToken" );
@@ -80,6 +104,7 @@ export class LoginService {
 								},
 								err => {
 									this.alerts.alerta("Error!", `${err['error'].token}.`, 'error');
+									console.log( err );
 								}
 							)
 						);
@@ -94,10 +119,9 @@ export class LoginService {
 
 		return this.http.post<Heroe>( `${ this.urlBase }/crearUsuario`, params )
 						.pipe( 
-							tap( data => {
-									console.log( data.usuario )
+							tap( 
+								data => {
 									this.alerts.alerta("Hecho!", `Se creó el usuario: ${ data.usuario }`, 'success'); 
-									
 								},
 								err => {
 									this.alerts.alerta("Error!", `${ err.error.token }`, 'error');

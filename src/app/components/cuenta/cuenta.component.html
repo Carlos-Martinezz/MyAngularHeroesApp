@@ -1,12 +1,13 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-4 ml-auto mr-auto  col-xs-12">
+		<div class="col-md-5 ml-auto mr-auto col-xs-12">
 			<!-- Material form login -->
-			<mdb-card>
+			<mdb-card class="mb-5">
 				<mdb-card-header class="primary-color white-text text-center py-4">
-					<h5>
-						Crear Usuario
+					<h5 class="mb-5">
+						Actualizar datos de la cuenta
 					</h5>
+					<p>Por seguridad, vuelve a ingresar tu usuario y tu contraseña.</p>
 				</mdb-card-header>
 				<!--Card content-->
 				<mdb-card-body class="px-lg-5 pt-0">
@@ -30,9 +31,18 @@
 									id="materialLoginFormPassword" 
 									class="form-control" 
 									mdbInput>
-							<label for="materialLoginFormPassword">Contraseña</label>
+							<label for="materialLoginFormPassword">Contraseña Actual</label>
 						</div>
-						
+                        <!-- New Password -->
+						<div class="md-form">
+							<input  name="nueva"
+									formControlName="nueva"
+									type="password" 
+									id="materialLoginFormNewPassword" 
+									class="form-control" 
+									mdbInput>
+							<label for="materialLoginFormNewPassword">Nueva Contraseña</label>
+						</div>
 						<!-- Sign in button -->
 						<button (click)="enviar()"
 								[disabled]="formGroup.invalid"
@@ -42,18 +52,8 @@
 								block="true"
 								class="my-4 waves-effect z-depth-0" 
 								mdbWavesEffect 
-								type="button">Crear</button>
-						<!-- Register -->
-						¿Ya está registrado?
-						<p>
-							<a  routerLink="/login" 
-								mdbBtn 
-								color="success"
-								rounded="true"
-								block="true"
-								class="my-4 waves-effect z-depth-0"
-								mdbWavesEffect>Iniciar Sesión</a>
-						</p>
+								type="button">Entrar</button>
+						
 					</form>
 					<!-- Form -->
 				</mdb-card-body>

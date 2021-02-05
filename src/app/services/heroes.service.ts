@@ -96,4 +96,8 @@ export class HeroesService {
 		return this.http.get(`${ this.urlBase }/getCasas`);
 	}
 
+	getUrlBase() {
+		return this.urlBase;
+	}
+
 }
